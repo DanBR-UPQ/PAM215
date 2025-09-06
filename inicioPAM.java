@@ -33,25 +33,34 @@ class inicioPAM{
     public static void main(String[] args){
         Scanner teclado = new Scanner(System.in);
 
-        System.out.println("1. Reglamento POO\n2. Lineamientos de Classroom\n3. Fechas de Parciales\n4. Porcentajes por Parcial");
-        System.out.print("Seleccione una opción: ");
-        int s = teclado.nextInt();
+        while(true){
+            System.out.println("1. Reglamento POO\n2. Lineamientos de Classroom\n3. Fechas de Parciales\n4. Porcentajes por Parcial");
+            System.out.print("Seleccione una opción: ");
+            int s = teclado.nextInt();
+            teclado.nextLine();
 
-        switch(s){
-            case 1:
-                ReglamentoPOO();
+            switch(s){
+                case 1:
+                    ReglamentoPOO();
+                    break;
+                case 2:
+                    LineamientosClassroom();
+                    break;            
+                case 3:
+                    FechasdeParciales();
+                    break;   
+                case 4:
+                    PorcentajesporParcial();
+                    break;                  
+                default:
+                    System.out.println("Número inválido");                           
+            }
+
+            System.out.println("Para salir, ingrese 1. Para continuar, presione enter");
+            String Continuar = teclado.nextLine();
+            if(Continuar.equals("1")){
                 break;
-            case 2:
-                LineamientosClassroom();
-                break;            
-            case 3:
-                FechasdeParciales();
-                break;   
-            case 4:
-                PorcentajesporParcial();
-                break;                  
-            default:
-                System.out.println("Número inválido");                           
+            }
         }
 
         teclado.close();
