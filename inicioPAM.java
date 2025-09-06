@@ -11,9 +11,17 @@ métodos usando la programación orientada a objetos
 */
 import java.util.Scanner;
 
-class inicioPAM{
+interface Interfaz{
+    void ReglamentoPOO();
+    void LineamientosClassroom();
+    void FechasdeParciales();
+    void PorcentajesporParcial();
 
-    static void ReglamentoPOO(){
+}
+
+class inicioPAM implements Interfaz{
+
+    public void ReglamentoPOO(){
         System.out.println("1. Se requiere 80% de asistencia para tener derecho a evaluación parcial y 80% de trabajos en clase");
         System.out.println("2. Se permiten 10 minutos de tolerancia y si el alumno llega después de este tiempo puede permanecer en la clase, pero no se tomará la asistencia (Solamente en los horarios de inicio: 7:00 a.m y 14:00 p.m)");
         System.out.println("3. Las faltas deberán estar justificadas mediante el correo institucional con un plazo máximo de 24 horas posteriores a la hora de falta en clase mediante correo del tutor(a), justificantes entregados fuera de la fecha límite permitido no se aceptan, únicamente se aceptarán recetas médicas y citatorios jurídicos. (De forma física deben ser presentados al tutor para ser validados y de forma posterior emitidos)");
@@ -33,18 +41,28 @@ class inicioPAM{
         System.out.println("17. Este reglamento entra en vigor después de que se firme o se acepte por la mayoría de los estudiantes asistentes a la primera sesión de la materia. Una vez firmado o aceptado por el 50% más el jefe de grupo, es vigente para todo alumno inscrito en el curso aunque no esté presente en la primera sesión");
     }
 
-    static void LineamientosClassroom(){
-        System.out.println("TODO: ENCONTRAR LINEAMIENTOS");
+    public void LineamientosClassroom(){
+        System.out.println("Cada reporte debe contener:");
+        System.out.println("o PORTADA");
+        System.out.println("o APUNTES TEORICOS");
+        System.out.println("o PRACTICA GUIADA PASO A PASO");
+        System.out.println("o CAPTURAS DE CADA PASO");
+        System.out.println("o RESULTADO DE LA PRACTICA");
+        System.out.println("o CONCLUSION DE APRENDIZAJE");
+        System.out.println("\nCada entregable debe contener:");
+        System.out.println("a. Reporte de práctica");
+        System.out.println("b. Enlace de repositorio de GitHub");
+
     }
 
-    static void FechasdeParciales(){
+    public void FechasdeParciales(){
         System.out.println("1er parcial: 29-Sep-25");
         System.out.println("2do parcial: 03-Oct-25");
         System.out.println("3er parcial: 01-Dec-25");
         System.out.println("Final: 89-Dec-25");
     }
 
-    static void PorcentajesporParcial(){
+    public void PorcentajesporParcial(){
         System.out.println("                        1P      2P      3P");
         System.out.println("Conocimiento:           40%     40%     20%");
         System.out.println("Desempeño:              20%     20%     10%");
@@ -56,6 +74,7 @@ class inicioPAM{
 
     public static void main(String[] args){
         Scanner teclado = new Scanner(System.in);
+        inicioPAM Obj = new inicioPAM();
 
         while(true){
             System.out.println("1. Reglamento POO\n2. Lineamientos de Classroom\n3. Fechas de Parciales\n4. Porcentajes por Parcial");
@@ -65,22 +84,22 @@ class inicioPAM{
 
             switch(s){
                 case 1:
-                    ReglamentoPOO();
+                    Obj.ReglamentoPOO();
                     break;
                 case 2:
-                    LineamientosClassroom();
+                    Obj.LineamientosClassroom();
                     break;            
                 case 3:
-                    FechasdeParciales();
+                    Obj.FechasdeParciales();
                     break;   
                 case 4:
-                    PorcentajesporParcial();
+                    Obj.PorcentajesporParcial();
                     break;                  
                 default:
                     System.out.println("Número inválido");                           
             }
 
-            System.out.println("Para salir, ingrese 1. Para continuar, presione enter");
+            System.out.println("\nPara salir, ingrese 1. Para continuar, presione enter");
             String Continuar = teclado.nextLine();
             if(Continuar.equals("1")){
                 break;
