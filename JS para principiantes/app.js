@@ -32,8 +32,8 @@ const PI = 3.141519
 console.log(usuario, " ", apellido)
 
 document.write("Hola mundo") // Deprecado, elimina todo el html que ya existe
-document.getElementById("demo").innerText = "Hola mundo 2" // No deprecado, puro texto
-document.getElementById("demo2").innerHTML = "<h1>Título</h1>" // para poner HTML
+document.getElementById("demo").innerText = "Hola mundo 2\n" // No deprecado, puro texto
+document.getElementById("demo2").innerHTML += "<h1>Título</h1>" // para poner HTML
 
 
 // Funciones
@@ -48,4 +48,4 @@ function Suma(x, y){
     return x + y;
 }
 
-document.getElementById("demo3").innerText = Suma(x,y)
+document.getElementById("demo").innerText += Suma(x,y)
