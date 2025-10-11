@@ -18,7 +18,9 @@ export default function App() {
 
       <Text>Contador: {contador}</Text>
       <br></br>
-      <Button title='Incrementa' onPress={()=>setContador(contador+1)}> </Button>
+      <Button title='Incrementa' onPress={()=>setContador(contador+1)}> </Button> <br></br>
+      <Button title='Decrementa' onPress={()=>setContador(contador-1)}> </Button> <br></br>
+      <Button title='Reinicia' onPress={()=>setContador(contador - contador)}> </Button> <br></br>
 
       <StatusBar style="auto" /> 
 
