@@ -9,7 +9,7 @@ import React, {useState} from 'react';
 // Ahorita es una función que cuando se compila, regresa una vista
 export default function App() {
 
-  const [contador, setContador] = useState(2); // Destructuración de useState
+  const [contador, setContador] = useState(0); // Destructuración de useState
 
   return (
 
@@ -22,7 +22,7 @@ export default function App() {
 
       <View style={styles.contenedorBotones}>
 
-        <Button title='Incrementa' onPress={()=>setContador(contador* contador)} color={'#5b5188ff'}> </Button> 
+        <Button title='Incrementa' onPress={()=>setContador(contador +1)} color={'#5b5188ff'}> </Button> 
         <Button title='Decrementa' onPress={()=>setContador(contador-1)} color={'#5b5188ff'}> </Button> 
         <Button title='Reinicia' onPress={()=>setContador(contador - contador)} color={'#5b5188ff'}> </Button> 
 

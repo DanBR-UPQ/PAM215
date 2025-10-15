@@ -36,7 +36,7 @@ export default function MenuScreen() {
             default:
                 return (
                     <View style={styles.container}>
-                        <Text style={styles.texto}>MenuScreen</Text>
+                        <Text style={styles.texto}>Menú de Prácticas</Text>
 
                         <View style={styles.containerBotones}>
                             <Button onPress={() => setScreen('contador')} title='pract: contador'/>
