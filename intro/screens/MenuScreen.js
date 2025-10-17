@@ -3,6 +3,7 @@ import React, { use, useState } from 'react'
 
 import ContadorScreen from './ContadorScreen';
 import BotonesScreen from './BotonesScreen';
+import Botones2Screen from './Botones2Screen';
 import ActivityScreen from './ActivityScreen';
 import BottomScreen from './BottomScreen';
 import FlatListScreen from './FlatListScreen';
@@ -19,7 +20,7 @@ export default function MenuScreen() {
         case 'contador':
             return <ContadorScreen/>;
         case 'botones':
-            return <BotonesScreen/>;
+            return <Botones2Screen/>;
         case 'image':
             return <ImageBgScreen/>
         case 'scroll':
