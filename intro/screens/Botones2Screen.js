@@ -4,7 +4,6 @@ import { View, Text, Button, Switch, StyleSheet } from 'react-native';
 export default function Botones2Screen() {
   const [isOn, setIsOn] = useState(false);
   const [color, setColor] = useState('#ffff33');
-  const [isEnabled, setIsEnabled] = useState(false);
 
   return (
     <View style={styles.container}>
@@ -17,14 +16,14 @@ export default function Botones2Screen() {
       <Switch
         value={isOn}
         onValueChange={() => setIsOn(!isOn)}
-        thumbColor={isOn ? '#f7e11a' : '#ccc'}
+        //thumbColor={{ true: '#f5dd4b', false: '#6c2f2fff' }}
         trackColor={{ true: '#f5dd4b', false: '#888' }}
       />
-
+g
       <View style={styles.buttonRow}>
-        <Button title="Amarilla" color="#f5e642" onPress={() => isOn && setColor('#f5e642')} />
-        <Button title="Azul" color="#4a90e2" onPress={() => isOn && setColor('#4a90e2')} />
-        <Button title="Roja" color="#e94f37" onPress={() => isOn && setColor('#e94f37')} />
+        <Button title="Amarilla" color="#f5e642" onPress={() =>setColor('#f5e642')} />
+        <Button title="Azul" color="#4a90e2" onPress={() =>setColor('#4a90e2')} />
+        <Button title="Roja" color="#e94f37" onPress={() =>setColor('#e94f37')} />
       </View>
 
     </View>
