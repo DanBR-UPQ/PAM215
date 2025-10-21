@@ -21,8 +21,8 @@ export default function MenuScreen() {
             return <ContadorScreen/>;
         case 'botones':
             return <BotonesScreen/>;
-        case 'botones2':
-            return <Botones2Screen/>;
+        case 'text':
+            return <TextInputScreen/>;
         case 'image':
             return <ImageBgScreen/>
         case 'scroll':
@@ -44,7 +44,8 @@ export default function MenuScreen() {
                         <View style={styles.containerBotones}>
                             <Button onPress={() => setScreen('contador')} title='pract: contador'/>
                             <Button onPress={() => setScreen('botones')} title='pract: buttons'/>
-                            {/*<Button onPress={() => setScreen('botones2')} title='pract: buttons terminado'/>*/}    
+                            {/*<Button onPress={() => setScreen('botones2')} title='pract: buttons terminado'/>*/}   
+                            <Button onPress={() => setScreen('text')} title='pract: textinput'/> 
                             <Button onPress={() => setScreen('image')} title='pract: image background'/>
                             <Button onPress={() => setScreen('scroll')} title='pract: scrollview'/>
                             <Button onPress={() => setScreen('act')} title='pract: activity indicator'/>

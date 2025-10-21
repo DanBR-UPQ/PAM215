@@ -19,7 +19,6 @@ export default function Botones2Screen() {
         //thumbColor={{ true: '#f5dd4b', false: '#6c2f2fff' }}
         trackColor={{ true: '#f5dd4b', false: '#888' }}
       />
-g
       <View style={styles.buttonRow}>
         <Button title="Amarilla" color="#f5e642" onPress={() =>setColor('#f5e642')} />
         <Button title="Azul" color="#4a90e2" onPress={() =>setColor('#4a90e2')} />
