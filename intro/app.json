@@ -8,7 +8,7 @@
     "userInterfaceStyle": "light",
     "newArchEnabled": true,
     "splash": {
-      "image": "./assets/dulce.jpg",
+      "image": "./assets/icono_repaso1.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
