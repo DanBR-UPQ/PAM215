@@ -26,22 +26,7 @@ export default function App() {
     return()=> clearTimeout(timer);
   },[]);
 
-  /* 16, 19, 20, 15?, 0 = 35->55->70*/
 
-
-  if(cargando){
-    return(
-      <Animated.View style={[styles.splashContainer, {opacity: desvanecido}]}>
-        <ImageBackground
-        source={require('./assets/splash1.png')}
-        resizeMode='contain'
-        style={styles.splashImage}
-        >
-          <Text style={styles.splashText}>Cargando...</Text>
-        </ImageBackground>
-      </Animated.View>
-    );
-  }
 
 
   return (
