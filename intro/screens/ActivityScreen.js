@@ -52,5 +52,5 @@ const styles = StyleSheet.create({
   loaderContainer:{
     alignItems: 'center',
     justifyContent: 'center',
-  }
+  },
 })
