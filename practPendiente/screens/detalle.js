@@ -1,4 +1,4 @@
-import { Text, StyleSheet, View } from 'react-native'
+import { Text, StyleSheet, View, Button } from 'react-native'
 import {Ionicons} from '@expo/vector-icons'
 
 export default function detalle({navigation}){
@@ -8,6 +8,7 @@ export default function detalle({navigation}){
         <View style = {styles.iconRow}>
             <Ionicons name="person-outline" size= {20} color="green" />
             <Text style={styles.title}>Detalles de usuario</Text>
+            <Button title="Perfil" onPress={() => navigation.navigate('Profile')} />
         </View>
       </View>
     )
