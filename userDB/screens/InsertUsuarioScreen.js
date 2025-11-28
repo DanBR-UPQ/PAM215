@@ -1,5 +1,5 @@
 import { useEffect, useState, useCallback } from 'react';
-import { View, Text, TextInput, TouchableOpacity, FlatList,StyleSheet, Alert,ActivityIndicator,Platform } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity, FlatList,StyleSheet, Alert,ActivityIndicator,Platform, Modal, Button } from 'react-native';
 import {UsuarioController} from '../controllers/UsuarioController'
 
 
@@ -13,6 +13,10 @@ export default function InsertUsuarioScreen() {
   const [nombre, setNombre] = useState('');
   const [loading, setLoading] = useState(true);
   const [guardando, setGuardando] = useState(false);
+  const [editVisible, setEditVisible] = useState(false)
+  const [editText, setEditText] = useState("")
+  const [editUser, setEditUser] = useState(null)
+
 
 
   const cargarUsuarios = useCallback(async() => {
@@ -64,6 +68,32 @@ export default function InsertUsuarioScreen() {
   }
 
 
+  const handleEliminarUsuario = async (id) => {
+    try {
+        await controller.eliminarUsuario(id)
+        Alert.alert("Eliminado", "Usuario eliminado correctamente")
+    } catch (error) {
+        Alert.alert("Error", error.message)
+    }
+  }
+
+
+  const handleEditarUsuario = (usuario) => {
+    if (Platform.OS === "web") {
+      const nuevo = prompt("Nuevo nombre:", usuario.nombre)
+      if (!nuevo) return
+      controller.actualizarUsuario(usuario.id, nuevo)
+      return
+    }
+
+    setEditUser(usuario)
+    setEditText(usuario.nombre)
+    setEditVisible(true)
+  }
+
+
+
+
   // Renderizar cada usuario
   const renderUsuario = ({ item, index }) => (
       <View style={styles.userItem}>
@@ -81,6 +111,21 @@ export default function InsertUsuarioScreen() {
                       day: 'numeric'
                   })}
               </Text>
+              <View style={styles.actionRow}>
+                  <TouchableOpacity 
+                      style={styles.actionButton}
+                      onPress={() => handleEditarUsuario(item)}
+                  >
+                      <Text style={styles.actionText}>Editar</Text>
+                  </TouchableOpacity>
+
+                  <TouchableOpacity 
+                      style={styles.actionButton}
+                      onPress={() => handleEliminarUsuario(item.id)}
+                  >
+                      <Text style={styles.actionText}>Eliminar</Text>
+                  </TouchableOpacity>
+              </View>
           </View>
       </View>
   );
@@ -165,6 +210,50 @@ export default function InsertUsuarioScreen() {
 
 
       </View>
+
+
+  <Modal visible={editVisible} transparent>
+    <View style={styles.modalView}>
+      
+      <View style={styles.modalView2}>
+
+        <Text style={styles.sectionTitle}>Editar usuario</Text>
+
+        <TextInput
+          style={[styles.input, { marginBottom: 20 }]}
+          value={editText}
+          onChangeText={setEditText}
+          placeholder="Nuevo nombre"
+        />
+
+        <TouchableOpacity
+          style={[styles.actionButton, { marginBottom: 10 }]}
+          onPress={async () => {
+            try {
+              await controller.actualizarUsuario(editUser.id, editText)
+              Alert.alert("Actualizado", "Usuario modificado correctamente")
+            } catch (e) {
+              Alert.alert("Error", e.message)
+            }
+            setEditVisible(false)
+          }}
+        >
+          <Text style={styles.buttonText}>Guardar</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity
+          style={styles.actionButton}
+          onPress={() => setEditVisible(false)}
+        >
+          <Text style={styles.buttonText}>Cancelar</Text>
+        </TouchableOpacity>
+
+      </View>
+    </View>
+  </Modal>
+
+
+
 
 
     </View>
@@ -350,4 +439,31 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: '#1976D2',
   },
+  actionRow: {
+      flexDirection: "row",
+      marginTop: 10,
+      gap: 15
+  },
+  actionButton: {
+      backgroundColor: "#333d61ff",
+      paddingVertical: 6,
+      paddingHorizontal: 12,
+      borderRadius: 6
+  },
+  actionText: {
+      color: "#fff",
+      fontWeight: "bold"
+  },
+  modalView: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "rgba(0,0,0,0.3)"
+  },
+  modalView2: {
+    width: "80%",
+    backgroundColor: "#fff",
+    padding: 20,
+    borderRadius: 12
+  }
 });
